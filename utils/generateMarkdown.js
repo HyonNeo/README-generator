@@ -1,30 +1,71 @@
+const fs = require("fs")
+
+// Returns a license badge based on which license is passed in
+// If there is no license, return an empty string
+function renderLicenseBadge(license) {
+  if (!license) {
+    return ``;
+  } else {
+    return `[![${license} license](https://img.shields.io/badge/License-${license}-blue.svg)](${renderLicenseLink(license)})`
+  }
+}
+
+// Returns the license link
+function renderLicenseLink(license) {
+  if (license === 'MIT') {
+    return `https://lbesson.mit-license.org/`
+  }
+  if (license === 'GPL') {
+    return `http://perso.crans.org/besson/LICENSE.html`
+  }
+  if (license === 'CC--0') {
+    return `https://creativecommons.org/licenses/by-nd/4.0` 
+  }
+}
+
+// Returns the license section of README
+// If there is no license, return an empty string
+function renderLicenseSection(license) {
+  if (!license) {
+    return ``;
+  } else {
+    return `## Licenses
+    This project is covered under the ${license} license. To learn more about what this means, click the license button at the top.`
+  }
+}
+
 // function to generate markdown for README
-const generateMarkdown = data => {
+
+
+function generateMarkdown(data) {
   return `# ${data.title}
-  ![Github licence](http://img.shields.io/badge/license-${data.license}-blue.svg)
-  
-  ## Description 
-  ${data.description}
+  ${renderLicenseBadge(data.licenses)}
   ## Table of Contents
+  * [Description](#description)
   * [Installation](#installation)
   * [Usage](#usage)
-  * [License](#license)
+  * [Licenses](#licenses)
   * [Contributing](#contributing)
   * [Tests](#tests)
   * [Questions](#questions)
-  
-  ## Installation 
-  ${data.install}
-  ## Usage 
+  * [Credits](#credits)
+  ## Description
+  ${data.description}
+  ## Installation
+  ${data.installation}
+  ## Usage
   ${data.usage}
-  ## License 
-  This project is license under ${data.license}
-  ## Contributing 
-  ${data.contributors}
+  ${renderLicenseSection(data.licenses)}
+  ## Contributing
+  ${data.contributing}
   ## Tests
-  ${data.test}
+  ${data.tests}
   ## Questions
-  If you have any questions about this projects, please contact me directly at ${data.email}. You can view more of my projects at https://github.com/${data.github}.
+  Have questions about this project?  
+  GitHub: https://github.com/${data.github}  
+  Email: ${data.email}
+  ## Credits
+  ${data.name}
 `;
 }
 
