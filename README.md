@@ -3,6 +3,10 @@
 
 This application was created to generate a high-quality, professional README depending on a series of questions a user answers in their command line using Node.js
 
+## Video
+
+![video](./Assets/Video/Video.webm)
+
 ## Installation
 
 The user should clone the repository from GitHub and download Node. This application also requires a file system and inquirer module.
