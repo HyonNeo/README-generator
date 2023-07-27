@@ -5,7 +5,7 @@ This application was created to generate a high-quality, professional README dep
 
 ## Video
 
-![video](./Assets/Video/Video.webm)
+https://www.youtube.com/watch?v=BlOuGa2dJdE
 
 ## Installation
 
